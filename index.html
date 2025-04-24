@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>紫微三組抽牌</title>
+  <style>
+    body {
+      background-color: #1f1f25;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      margin-bottom: 30px;
+    }
+    button {
+      font-size: 1.2em;
+      padding: 10px 20px;
+      margin-bottom: 30px;
+      cursor: pointer;
+    }
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .card {
+      background-color: #333;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .card img {
+      width: 200px;
+      height: auto;
+      border-radius: 4px;
+      transition: transform 0.3s ease;
+    }
+    .reversed {
+      transform: rotate(180deg);
+    }
+    .label {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>紫微牌卡三組抽牌</h1>
+  <button onclick="drawCards()">抽一組牌</button>
+
+  <div class="cards" id="result"></div>
+
+  <script>
+    const mainDeck = [
+      "A天機.jpg", "A太陽.jpg", "A紫微.jpg", "B武曲七殺.jpg", "B紫微天相.jpg"
+    ];
+    const supportDeck = [
+      "C化祿.jpg", "C文昌.jpg", "C天魁.jpg", "C右弼.jpg"
+    ];
+    const lifeDeck = [
+      "D1長生.jpg", "D5帝旺.jpg", "D12養.jpg"
+    ];
+
+    function drawCard(deck, folder) {
+      const card = deck[Math.floor(Math.random() * deck.length)];
+      const isReversed = Math.random() < 0.5;
+      return `<div class="card">
+        <img src="${folder}/${card}" alt="" class="${isReversed ? 'reversed' : ''}">
+        <div class="label">${folder === 'main_deck' ? '主星牌組' : folder === 'support_deck' ? '輔星牌組' : '十二長生牌組'}（${isReversed ? '倒牌' : '正牌'}）</div>
+      </div>`;
+    }
+
+    function drawCards() {
+      const mainCardHTML = drawCard(mainDeck, 'main_deck');
+      const supportCardHTML = drawCard(supportDeck, 'support_deck');
+      const lifeCardHTML = drawCard(lifeDeck, 'life_deck');
+
+      document.getElementById('result').innerHTML =
+        mainCardHTML + supportCardHTML + lifeCardHTML;
+    }
+  </script>
+</body>
+</html>
