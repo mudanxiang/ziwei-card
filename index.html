@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <title>紫微三組抽牌</title>
+  <title>紫微牌卡基礎排陣</title>
   <style>
     body {
       background-color: #1f1f25;
@@ -12,7 +12,13 @@
       padding: 30px;
     }
     h1 {
+      margin-bottom: 20px;
+    }
+    .instructions {
       margin-bottom: 30px;
+      line-height: 1.8;
+      font-size: 1.1em;
+      color: #ddd;
     }
     button {
       font-size: 1.2em;
@@ -47,7 +53,16 @@
   </style>
 </head>
 <body>
-  <h1>紫微牌卡三組抽牌</h1>
+  <h1>紫微牌卡基礎排陣</h1>
+
+  <div class="instructions">
+    閉上眼睛<br>
+    深呼吸<br>
+    靜下心<br>
+    心中想著問題<br>
+    點下抽牌
+  </div>
+
   <button onclick="drawCards()">抽一組牌</button>
 
   <div class="cards" id="result"></div>
